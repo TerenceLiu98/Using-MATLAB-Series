@@ -1,7 +1,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%% Binomial Distribution %%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+profile one
 % X is a binomial random variablw with parameters (25, 0.2)
 % In MATLAB we use `binocdf`
 
