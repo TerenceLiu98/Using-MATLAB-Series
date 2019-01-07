@@ -170,3 +170,79 @@ pdf = mvnpdf(X,mu,SIGMA);
 surf(X1,X2,reshape(pdf,25,25));
 cdf = mvncdf(X,mu,SIGMA);
 surf(X1,X2,reshape(cdf,25,25));
+
+%%%%%%%%%%
+%% mean %%
+%%%%%%%%%%
+
+x = [1 2 3 4 5 6 7 8 9 10];
+mean(x)
+
+y = [1 2 3; 2 3 4; 3 4 5];
+mean(y) == mean(y,1) % default mode: mean by column
+mean(y,2) % mean by column 
+
+%%%%%%%%%%%%%%
+%% variance %%
+%%%%%%%%%%%%%%
+
+var(x); % variance of x
+std(x); % std of x
+var(x) == std(x) ^ 2 % to check whether they are equals
+
+%%%%%%%%%%%%%%%%%%%%
+%% Sample Moments %%
+%%%%%%%%%%%%%%%%%%%%
+
+% Generate a random sample from the uniform 
+% distribution
+n = 200;
+x = rand(1,200); % uniform distribution random number 
+% Find the mean of the sample 
+mu = mean(x);
+% Find the numerator and denominator for gamma_1 
+num = (1/n) * sum((x - mu).^ 3);
+den = (1/n) * sum((x - mu).^2);
+gam1 = num / den^(3/2);
+
+% Find the kurtosis
+num = (1/n) * sum((x - mu) .^ 4);
+den = (1/n) * sum((x - mu) .^ 2);
+gam2 = num / den ^ 2; 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Covariance and Correlation coefficient %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% First load the data. 
+load ('/Volumes/Storage/computation statistics/CSToolbox V3/cement.txt');
+% get the transformations 
+xr = 1./cement(:,1);
+logy = log(cement(:,2));
+%get a sctterplot of the data to see if the relationship is lienar 
+plot(xr, logy, 'x')
+axis([0 1.1 2.4 4])
+xlabel('Reciprocal of Drying Times')
+ylabel('Log of Tensile Strength')
+
+% get the covariance and the coreelation coefficient
+cmat = cov(xr, logy)
+cormat = corrcoef(xr, logy)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
